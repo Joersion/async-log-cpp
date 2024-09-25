@@ -10,8 +10,11 @@ set(CMAKE_CXX_STANDARD 17)
 # 生成位置无关代码
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
+# 静态库连接
+set(Boost_USE_STATIC_LIBS ON)
+
 # 指定boost查找的根路径
-set(CMAKE_PREFIX_PATH "/home/wujiaxiang/work/boost")
+set(CMAKE_PREFIX_PATH "~/work/boost/")
 
 # 找boost的组件
 find_package(Boost REQUIRED COMPONENTS log)

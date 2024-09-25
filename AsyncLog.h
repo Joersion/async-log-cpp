@@ -16,7 +16,7 @@ public:
     AsyncLog() = default;
     ~AsyncLog() = default;
 
-    static void init(const std::string& path);
+    static void init(const std::string& name);
     static severity_logger_mt<severity_level>& getLog();
 
 private:

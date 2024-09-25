@@ -14,12 +14,12 @@
 BOOST_LOG_INLINE_GLOBAL_LOGGER_DEFAULT(gLogger, severity_logger_mt<severity_level>);
 severity_logger_mt<severity_level>* AsyncLog::log_ = nullptr;
 
-void AsyncLog::init(const std::string& path) {
+void AsyncLog::init(const std::string& name) {
     boost::log::register_simple_formatter_factory<boost::log::trivial::severity_level, char>("Severity");
-    boost::log::add_file_log(boost::log::keywords::file_name = path + "_%Y%m%d%H%M%S" + ".log",
+    boost::log::add_file_log(boost::log::keywords::file_name = name + "_%Y%m%d%H%M%S" + ".log",
                              boost::log::keywords::rotation_size = 500 * 1024 * 1024,
                              boost::log::keywords::time_based_rotation = rotation_at_time_point(0, 0, 0),
-                             boost::log::keywords::format = "%TimeStamp% %Severity% 0 %Message%",
+                             boost::log::keywords::format = "%TimeStamp% [%Severity%] %ThreadID% %Message%",
                              boost::log::keywords::min_free_space = 10 * 1024 * 1024,
                              boost::log::keywords::auto_flush = true,
                              boost::log::keywords::open_mode = std::ios::out | std::ios::app);
