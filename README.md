@@ -50,6 +50,7 @@ if ! gcc in [ feature.values <toolset> ]
 ```
 ## 简单示例
 * 打印日志信息:
+```
 #include "../AsyncLog.h"
 
 void testLog() {
